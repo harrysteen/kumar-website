@@ -10,7 +10,7 @@ export default function HeroSection({
   setIsPlayingGame,
   soundEnabled = true,
   triggerGameId = 0,
-  isColorMode = false
+  isLightTheme = false
 }) {
   const canvasRef = useRef(null);
 
@@ -26,14 +26,14 @@ export default function HeroSection({
   const [gameFinished, setGameFinished] = useState(false);
   const [orbs, setOrbs] = useState([]);
 
-  // SKILLS LIST (Next.js, MongoDB, React.js, HTML, CSS, JavaScript)
+  // SKILLS LIST (Vibrant Colorful Badges for Mini-Game)
   const techList = [
-    { label: "Next.js", color: "bg-white text-black font-extrabold" },
-    { label: "MongoDB", color: "bg-emerald-600 text-white font-extrabold" },
-    { label: "React.js", color: "bg-cyan-400 text-black font-extrabold" },
-    { label: "HTML", color: "bg-orange-500 text-white font-extrabold" },
-    { label: "CSS", color: "bg-blue-500 text-white font-extrabold" },
-    { label: "JavaScript", color: "bg-yellow-400 text-black font-extrabold" }
+    { label: "Next.js", color: "bg-white text-black font-extrabold shadow-lg shadow-white/50 border border-white" },
+    { label: "MongoDB", color: "bg-emerald-500 text-black font-extrabold shadow-lg shadow-emerald-500/50 border border-emerald-400" },
+    { label: "React.js", color: "bg-cyan-400 text-black font-extrabold shadow-lg shadow-cyan-400/50 border border-cyan-300" },
+    { label: "HTML", color: "bg-orange-500 text-white font-extrabold shadow-lg shadow-orange-500/50 border border-orange-400" },
+    { label: "CSS", color: "bg-blue-600 text-white font-extrabold shadow-lg shadow-blue-600/50 border border-blue-400" },
+    { label: "JavaScript", color: "bg-yellow-400 text-black font-extrabold shadow-lg shadow-yellow-400/50 border border-yellow-300" }
   ];
 
   // Web Audio Synth for Gamified Sound Effects (User Favorite)
@@ -111,9 +111,9 @@ export default function HeroSection({
         id: Math.random(),
         label: tech.label,
         color: tech.color,
-        top: Math.random() * 60 + 20,
-        left: Math.random() * 80 + 10,
-        scale: Math.random() * 0.3 + 0.95
+        top: Math.random() * 50 + 25,
+        left: Math.random() * 60 + 10,
+        scale: Math.random() * 0.25 + 0.9
       });
     }
     setOrbs(newOrbs);
@@ -150,9 +150,9 @@ export default function HeroSection({
           id: Math.random(),
           label: tech.label,
           color: tech.color,
-          top: Math.random() * 60 + 20,
-          left: Math.random() * 80 + 10,
-          scale: Math.random() * 0.3 + 0.95
+          top: Math.random() * 50 + 25,
+          left: Math.random() * 60 + 10,
+          scale: Math.random() * 0.25 + 0.9
         }
       ];
     });
@@ -219,14 +219,14 @@ export default function HeroSection({
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${force * 0.25})`;
+          ctx.strokeStyle = isLightTheme ? `rgba(17, 24, 39, ${force * 0.2})` : `rgba(255, 255, 255, ${force * 0.25})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = isColorMode ? "rgba(56, 189, 248, 0.8)" : "rgba(255, 255, 255, 0.7)";
+        ctx.fillStyle = isLightTheme ? "rgba(17, 24, 39, 0.4)" : "rgba(255, 255, 255, 0.75)";
         ctx.fill();
       }
 
@@ -240,13 +240,15 @@ export default function HeroSection({
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isColorMode]);
+  }, [isLightTheme]);
 
   return (
     <section 
       id="hero" 
       onClick={(e) => addXp(25, "Energy Burst", e)}
-      className="relative w-full h-[calc(100vh-80px)] bg-[#000000] overflow-hidden flex flex-col items-center justify-end select-none cursor-crosshair"
+      className={`relative w-full min-h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] overflow-hidden flex flex-col items-center justify-end select-none cursor-crosshair pb-2 sm:pb-0 transition-colors duration-500 ${
+        isLightTheme ? "bg-[#F8F9FA]" : "bg-[#000000]"
+      }`}
     >
       {/* Interactive Canvas Background */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
@@ -258,7 +260,7 @@ export default function HeroSection({
           initial={{ opacity: 1, y: item.y, x: item.x, scale: 0.8 }}
           animate={{ opacity: 0, y: item.y - 60, scale: 1.3 }}
           transition={{ duration: 1 }}
-          className="fixed pointer-events-none z-50 font-mono font-bold text-sm text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.9)]"
+          className="fixed pointer-events-none z-50 font-mono font-bold text-sm text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
         >
           +{item.amount} XP ⚡
         </motion.div>
@@ -271,10 +273,10 @@ export default function HeroSection({
             initial={{ opacity: 0, y: -40, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-24 z-50 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#1C1C1C] border border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.4)] text-xs font-mono font-bold text-white"
+            className="fixed top-24 z-50 inline-flex items-center gap-2 sm:gap-3 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#1C1C1C] border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.2)] text-[11px] sm:text-xs font-mono font-bold text-white max-w-[90vw] text-center"
           >
-            <Award className="w-4 h-4 text-emerald-400 animate-bounce" />
-            <span>{achievement}</span>
+            <Award className="w-4 h-4 text-white animate-bounce shrink-0" />
+            <span className="truncate">{achievement}</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -284,22 +286,22 @@ export default function HeroSection({
         <div className="absolute inset-0 z-40 pointer-events-none">
           
           {/* Mini Game HUD Header */}
-          <div className="absolute top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 px-6 py-3 rounded-full bg-[#111111]/95 backdrop-blur-md border border-emerald-500/40 shadow-2xl font-mono text-white pointer-events-auto">
-            <div className="flex items-center gap-2">
-              <Target className="w-4 h-4 text-emerald-400 animate-spin" />
-              <span className="text-xs uppercase tracking-wider text-emerald-400 font-bold">SCORE:</span>
-              <span className="text-lg font-black text-white">{gameScore} PTS</span>
+          <div className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 sm:gap-6 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#111111]/95 backdrop-blur-md border border-emerald-500/40 shadow-2xl shadow-emerald-500/20 font-mono text-white pointer-events-auto max-w-[95vw]">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 animate-spin" />
+              <span className="text-[10px] sm:text-xs uppercase tracking-wider text-emerald-400 font-bold">SCORE:</span>
+              <span className="text-sm sm:text-lg font-black text-white">{gameScore} PTS</span>
             </div>
             <div className="w-[1px] h-4 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-amber-400 font-bold">TIME:</span>
-              <span className={`text-lg font-black ${timeLeft <= 3 ? "text-red-500 animate-ping" : "text-white"}`}>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-[10px] sm:text-xs uppercase tracking-wider text-amber-400 font-bold">TIME:</span>
+              <span className={`text-sm sm:text-lg font-black ${timeLeft <= 3 ? "text-red-500 animate-ping" : "text-white"}`}>
                 {timeLeft}s
               </span>
             </div>
             <button
               onClick={() => setIsPlayingGame(false)}
-              className="text-xs text-white/50 hover:text-white ml-2 underline"
+              className="text-[11px] sm:text-xs text-white/50 hover:text-white ml-1 underline cursor-pointer"
             >
               Exit
             </button>
@@ -313,12 +315,12 @@ export default function HeroSection({
                   key={orb.id}
                   onClick={(e) => popOrb(orb.id, e)}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: orb.scale, opacity: 1, y: [0, -15, 0] }}
+                  animate={{ scale: orb.scale, opacity: 1, y: [0, -12, 0] }}
                   transition={{ y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
                   whileHover={{ scale: 1.25 }}
-                  whileTap={{ scale: 0.8 }}
+                  whileTap={{ scale: 0.85 }}
                   style={{ top: `${orb.top}%`, left: `${orb.left}%` }}
-                  className={`absolute pointer-events-auto px-4 py-2 rounded-full font-mono text-xs font-extrabold shadow-2xl border border-white/30 flex items-center gap-1.5 cursor-pointer hover:shadow-emerald-500/50 transition-shadow ${orb.color}`}
+                  className={`absolute pointer-events-auto px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full font-mono text-[10px] sm:text-xs font-extrabold shadow-2xl flex items-center gap-1 cursor-pointer transition-transform ${orb.color}`}
                 >
                   <span>⚡ {orb.label}</span>
                 </motion.button>
@@ -331,30 +333,30 @@ export default function HeroSection({
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/85 backdrop-blur-md pointer-events-auto"
+              className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/85 backdrop-blur-md pointer-events-auto px-4"
             >
-              <div className="p-8 rounded-2xl bg-[#161616] border border-emerald-500/40 text-center max-w-md shadow-2xl">
-                <Trophy className="w-12 h-12 text-amber-400 mx-auto mb-3 animate-bounce" />
-                <h3 className="text-2xl font-black font-mono text-white mb-1">GAME OVER!</h3>
-                <p className="text-sm text-emerald-400 font-mono font-bold mb-4">
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#161616] border border-emerald-500/40 text-center max-w-sm sm:max-w-md shadow-2xl w-full">
+                <Trophy className="w-10 h-10 sm:w-12 sm:h-12 text-amber-400 mx-auto mb-3 animate-bounce" />
+                <h3 className="text-xl sm:text-2xl font-black font-mono text-white mb-1">GAME OVER!</h3>
+                <p className="text-xs sm:text-sm text-emerald-400 font-mono font-bold mb-4">
                   FINAL SCORE: {gameScore} PTS ⚡
                 </p>
                 <p className="text-xs text-white/70 mb-6">
                   You caught Kumar Raju's core tech skills in 15 seconds!
                 </p>
-                <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center justify-center gap-3 sm:gap-4">
                   <button
                     onClick={startMiniGame}
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500 text-black font-mono font-bold text-xs hover:bg-emerald-400 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 text-black font-mono font-bold text-xs hover:scale-105 transition-transform cursor-pointer shadow-lg shadow-emerald-500/30"
                   >
-                    <RefreshCw className="w-4 h-4" />
+                    <RefreshCw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span>PLAY AGAIN</span>
                   </button>
                   <button
                     onClick={() => setIsPlayingGame(false)}
-                    className="px-6 py-3 rounded-full bg-white/10 text-white font-mono font-bold text-xs hover:bg-white/20 transition-colors"
+                    className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/10 text-white font-mono font-bold text-xs hover:bg-white/20 transition-colors cursor-pointer"
                   >
-                    BACK TO HERO
+                    EXIT
                   </button>
                 </div>
               </div>
@@ -365,20 +367,20 @@ export default function HeroSection({
       )}
 
       {/* 1. Giant Background Typography (KUMAR Left / RAJU Right) */}
-      <div className="absolute top-[26%] sm:top-[28%] -translate-y-1/2 w-full flex justify-between items-center pointer-events-none select-none z-0 px-2 sm:px-6 lg:px-12">
-        <span className="text-giant-title text-right flex-1 pr-8 sm:pr-14 md:pr-20 lg:pr-28 transition-colors duration-500">
+      <div className="absolute top-[26%] sm:top-[28%] -translate-y-1/2 w-full flex justify-between items-center pointer-events-none select-none z-0 px-1 sm:px-6 lg:px-12">
+        <span className="text-giant-title text-right flex-1 pr-2 sm:pr-14 md:pr-20 lg:pr-28 transition-colors duration-500">
           KUMAR
         </span>
-        <span className="text-giant-title text-left flex-1 pl-8 sm:pl-14 md:pl-20 lg:pl-28 transition-colors duration-500">
+        <span className="text-giant-title text-left flex-1 pl-2 sm:pl-14 md:pl-20 lg:pl-28 transition-colors duration-500">
           RAJU
         </span>
       </div>
 
-      {/* 2. Centered Subject Image (Switches between B&W and COLOR image seamlessly) */}
-      <div className="relative z-10 w-full h-full max-w-4xl lg:max-w-5xl px-4 flex items-end justify-center">
-        <div className="relative w-full h-[88%] max-h-[750px]">
+      {/* 2. Centered Subject Image */}
+      <div className="relative z-10 w-full h-full max-w-4xl lg:max-w-5xl px-0 sm:px-4 flex items-end justify-center">
+        <div className="relative w-full h-[90vh] sm:h-[84vh] md:h-[88%] max-h-[750px] scale-125 xs:scale-120 sm:scale-100 origin-bottom">
           <Image
-            src={isColorMode ? "/kumar-raju-image2.png" : "/kumar-raju-image.png"}
+            src={isLightTheme ? "/kumar-raju-image2.png" : "/kumar-raju-image.png"}
             alt="Kumar Raju Portfolio Visual"
             fill
             priority
@@ -394,23 +396,27 @@ export default function HeroSection({
           addXp(100, "Secret Node Unlocked", e);
           triggerAchievement("SECRET DISCOVERED: +100 XP!");
         }}
-        className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-20 inline-flex items-center gap-3 px-4 py-2 rounded-xl border border-[#262626] bg-[#000000]/85 backdrop-blur-md cursor-pointer hover:border-emerald-500/50 transition-colors shadow-2xl group"
+        className={`absolute bottom-3 left-3 sm:bottom-8 sm:left-8 z-20 inline-flex items-center gap-2.5 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl backdrop-blur-md cursor-pointer transition-all shadow-2xl group max-w-[150px] sm:max-w-none ${
+          isLightTheme ? "bg-white/90 border border-gray-300 hover:border-gray-500 text-gray-900" : "bg-[#000000]/85 border border-[#262626] hover:border-white/50 text-white"
+        }`}
       >
-        <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-110 transition-transform">
+        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[10px] sm:text-xs group-hover:scale-110 transition-transform shrink-0 ${
+          isLightTheme ? "bg-gray-100 text-gray-900 border border-gray-300" : "bg-white/10 text-white border border-white/20"
+        }`}>
           LVL {level}
         </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-white tracking-wider">
-              {xp} <span className="text-emerald-400">XP</span>
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider truncate ${isLightTheme ? "text-gray-900" : "text-white"}`}>
+              {xp} <span className={isLightTheme ? "text-gray-500" : "text-[#AAAAAA]"}>XP</span>
             </span>
-            <span className="text-[10px] font-mono text-[#DCDCDC]/50 uppercase">
+            <span className={`text-[9px] sm:text-[10px] font-mono uppercase hidden xs:inline ${isLightTheme ? "text-gray-400" : "text-[#DCDCDC]/50"}`}>
               / {level * 300}
             </span>
           </div>
-          <div className="w-24 h-1.5 bg-[#222222] rounded-full overflow-hidden mt-1">
+          <div className={`w-16 sm:w-24 h-1 sm:h-1.5 rounded-full overflow-hidden mt-1 ${isLightTheme ? "bg-gray-200" : "bg-[#222222]"}`}>
             <div 
-              className="h-full bg-emerald-400 transition-all duration-300"
+              className={`h-full transition-all duration-300 ${isLightTheme ? "bg-black" : "bg-white"}`}
               style={{ width: `${Math.min(100, (xp / (level * 300)) * 100)}%` }}
             />
           </div>
@@ -418,15 +424,17 @@ export default function HeroSection({
       </div>
 
       {/* 4. Floating Bottom Right Short Description */}
-      <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-20 max-w-[240px] sm:max-w-xs text-right bg-[#000000]/80 backdrop-blur-md p-3.5 sm:p-4 rounded-xl border border-[#222222] shadow-2xl">
-        <div className="flex items-center justify-end gap-2 mb-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#DCDCDC]/75">
-            ● FULL-STACK ARCHITECT
+      <div className={`absolute bottom-3 right-3 sm:bottom-8 sm:right-8 z-20 max-w-[155px] xs:max-w-[200px] sm:max-w-xs text-right backdrop-blur-md p-2.5 sm:p-4 rounded-xl shadow-2xl transition-all ${
+        isLightTheme ? "bg-white/90 border border-gray-300 text-gray-900" : "bg-[#000000]/80 border border-[#222222] text-white"
+      }`}>
+        <div className="flex items-center justify-end gap-1.5 sm:gap-2 mb-0.5 sm:mb-1">
+          <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse shrink-0 ${isLightTheme ? "bg-black" : "bg-white"}`} />
+          <span className={`text-[9px] sm:text-xs font-mono uppercase tracking-widest truncate ${isLightTheme ? "text-gray-500" : "text-[#DCDCDC]/75"}`}>
+            FULL-STACK ARCHITECT
           </span>
         </div>
-        <p className="text-xs sm:text-sm font-medium text-[#FFFFFF]/90 leading-snug">
-          Crafting high-performance web applications & interactive digital experiences.
+        <p className={`text-[10px] sm:text-sm font-medium leading-tight sm:leading-snug ${isLightTheme ? "text-gray-800" : "text-white/90"}`}>
+          Crafting web apps & digital experiences.
         </p>
       </div>
 

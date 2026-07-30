@@ -11,46 +11,48 @@ export default function Home() {
   const [isPlayingGame, setIsPlayingGame] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [triggerGameId, setTriggerGameId] = useState(0);
-  const [isColorMode, setIsColorMode] = useState(false); // false = B&W, true = Color
+  const [isLightTheme, setIsLightTheme] = useState(false); // false = Dark Theme, true = Light Theme
 
   const handlePlayMiniGame = () => {
     setIsPlayingGame(true);
     setTriggerGameId((prev) => prev + 1);
   };
 
-  const handleToggleColorMode = () => {
-    setIsColorMode((prev) => !prev);
+  const handleToggleTheme = () => {
+    setIsLightTheme((prev) => !prev);
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#000000] text-[#FFFFFF] flex flex-col font-sans select-none overflow-x-hidden">
-      {/* Header Navigation with PLAY MINI-GAME Pill & COLOR MODE Toggle */}
+    <div className={`min-h-screen w-full flex flex-col font-sans select-none overflow-x-hidden transition-colors duration-500 ${
+      isLightTheme ? "bg-[#F8F9FA] text-[#111827]" : "bg-[#000000] text-[#FFFFFF]"
+    }`}>
+      {/* Header Navigation with Theme Switcher & Mini Game Button */}
       <Navbar 
         onPlayMiniGame={handlePlayMiniGame}
         soundEnabled={soundEnabled}
         setSoundEnabled={setSoundEnabled}
-        isColorMode={isColorMode}
-        onToggleColorMode={handleToggleColorMode}
+        isLightTheme={isLightTheme}
+        onToggleTheme={handleToggleTheme}
       />
 
-      {/* 1. Hero Section (100vh) */}
+      {/* 1. Hero Section */}
       <main className="w-full relative">
         <HeroSection 
           isPlayingGame={isPlayingGame}
           setIsPlayingGame={setIsPlayingGame}
           soundEnabled={soundEnabled}
           triggerGameId={triggerGameId}
-          isColorMode={isColorMode}
+          isLightTheme={isLightTheme}
         />
 
         {/* 2. Featured Projects Section */}
-        <ProjectsSection />
+        <ProjectsSection isLightTheme={isLightTheme} />
 
         {/* 3. About & Technical Competencies */}
-        <AboutSection />
+        <AboutSection isLightTheme={isLightTheme} />
 
         {/* 4. Contact & Experience Summary */}
-        <ContactSection />
+        <ContactSection isLightTheme={isLightTheme} />
       </main>
     </div>
   );

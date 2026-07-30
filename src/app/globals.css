@@ -5,21 +5,27 @@
   --text-grey: #383838;
 }
 
-html,
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
 body {
   min-height: 100%;
+  width: 100%;
   background-color: #000000;
   color: #FFFFFF;
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Giant Stretched Title (Fitting KUMAR on Left Side & RAJU on Right Side of Head) */
 .text-giant-title {
-  font-size: clamp(2rem, 9.5vw, 9.5rem);
+  font-size: clamp(2.25rem, 11vw, 9.5rem);
   font-weight: 900;
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -36,6 +42,13 @@ body {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-full {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
