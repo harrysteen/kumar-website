@@ -59,10 +59,8 @@ export default function ContactSection({ isLightTheme = false }) {
           {/* Left Column: Contact Details & Info */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className={`w-2 h-2 rounded-full ${isLightTheme ? "bg-black" : "bg-white"}`} />
-              <span className={`text-[11px] sm:text-xs font-mono uppercase tracking-widest ${
-                isLightTheme ? "text-gray-500" : "text-[#DCDCDC]/70"
-              }`}>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50" />
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">
                 GET IN TOUCH
               </span>
             </div>
@@ -82,18 +80,16 @@ export default function ContactSection({ isLightTheme = false }) {
               {/* Phone */}
               <a
                 href="tel:+916304467271"
-                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-colors group ${
-                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-gray-400" : "bg-[#0D0D0D] border-[#222222] hover:border-white/50"
+                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-all group ${
+                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-emerald-400" : "bg-[#0B0B0E] border-[#20202A] hover:border-emerald-500/50 shadow-emerald-500/5"
                 }`}
               >
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl border flex items-center justify-center font-mono shrink-0 ${
-                  isLightTheme ? "bg-white border-gray-200 text-black shadow-sm" : "bg-[#161616] border-[#2B2B2B] text-white"
-                }`}>
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-mono shrink-0 shadow-sm">
+                  <Phone className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <div className={`text-[10px] sm:text-xs font-mono ${isLightTheme ? "text-gray-500" : "text-[#888888]"}`}>PHONE</div>
-                  <div className={`text-xs sm:text-sm font-bold transition-colors truncate ${isLightTheme ? "text-gray-900 group-hover:text-black" : "text-white group-hover:text-white"}`}>
+                  <div className="text-[10px] sm:text-xs font-mono text-emerald-400 font-bold">PHONE</div>
+                  <div className={`text-xs sm:text-sm font-bold transition-colors truncate ${isLightTheme ? "text-gray-900 group-hover:text-emerald-600" : "text-white group-hover:text-emerald-300"}`}>
                     +91 6304467271
                   </div>
                 </div>
@@ -102,18 +98,16 @@ export default function ContactSection({ isLightTheme = false }) {
               {/* Email */}
               <a
                 href="mailto:kumarraj6304467271@gmail.com"
-                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-colors group ${
-                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-gray-400" : "bg-[#0D0D0D] border-[#222222] hover:border-white/50"
+                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-all group ${
+                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-cyan-400" : "bg-[#0B0B0E] border-[#20202A] hover:border-cyan-500/50 shadow-cyan-500/5"
                 }`}
               >
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl border flex items-center justify-center font-mono shrink-0 ${
-                  isLightTheme ? "bg-white border-gray-200 text-black shadow-sm" : "bg-[#161616] border-[#2B2B2B] text-white"
-                }`}>
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 flex items-center justify-center font-mono shrink-0 shadow-sm">
+                  <Mail className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className={`text-[10px] sm:text-xs font-mono ${isLightTheme ? "text-gray-500" : "text-[#888888]"}`}>EMAIL</div>
-                  <div className={`text-xs sm:text-sm font-bold transition-colors break-all leading-tight ${isLightTheme ? "text-gray-900 group-hover:text-black" : "text-white group-hover:text-white"}`}>
+                  <div className="text-[10px] sm:text-xs font-mono text-cyan-400 font-bold">EMAIL</div>
+                  <div className={`text-xs sm:text-sm font-bold transition-colors break-all leading-tight ${isLightTheme ? "text-gray-900 group-hover:text-cyan-600" : "text-white group-hover:text-cyan-300"}`}>
                     kumarraj6304467271@gmail.com
                   </div>
                 </div>
@@ -121,15 +115,13 @@ export default function ContactSection({ isLightTheme = false }) {
 
               {/* Location */}
               <div className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border ${
-                isLightTheme ? "bg-gray-50 border-gray-200" : "bg-[#0D0D0D] border-[#222222]"
+                isLightTheme ? "bg-gray-50 border-gray-200" : "bg-[#0B0B0E] border-[#20202A]"
               }`}>
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl border flex items-center justify-center font-mono shrink-0 ${
-                  isLightTheme ? "bg-white border-gray-200 text-black shadow-sm" : "bg-[#161616] border-[#2B2B2B] text-white"
-                }`}>
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center font-mono shrink-0 shadow-sm">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
-                  <div className={`text-[10px] sm:text-xs font-mono ${isLightTheme ? "text-gray-500" : "text-[#888888]"}`}>LOCATION</div>
+                  <div className="text-[10px] sm:text-xs font-mono text-amber-400 font-bold">LOCATION</div>
                   <div className={`text-xs sm:text-sm font-bold truncate ${isLightTheme ? "text-gray-900" : "text-white"}`}>
                     Ameerpet, Hyderabad, Telangana, India
                   </div>
@@ -141,23 +133,21 @@ export default function ContactSection({ isLightTheme = false }) {
                 href="https://harry.services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-colors group ${
-                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-gray-400" : "bg-[#0D0D0D] border-[#222222] hover:border-white/50"
+                className={`flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border transition-all group ${
+                  isLightTheme ? "bg-gray-50 border-gray-200 hover:border-purple-400" : "bg-[#0B0B0E] border-[#20202A] hover:border-purple-500/50 shadow-purple-500/5"
                 }`}
               >
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl border flex items-center justify-center font-mono shrink-0 ${
-                  isLightTheme ? "bg-white border-gray-200 text-black shadow-sm" : "bg-[#161616] border-[#2B2B2B] text-white"
-                }`}>
-                  <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center font-mono shrink-0 shadow-sm">
+                  <Globe className="w-5 h-5" />
                 </div>
                 <div className="flex-1 flex items-center justify-between min-w-0">
                   <div>
-                    <div className={`text-[10px] sm:text-xs font-mono ${isLightTheme ? "text-gray-500" : "text-[#888888]"}`}>LIVE PORTFOLIO</div>
-                    <div className={`text-xs sm:text-sm font-bold transition-colors ${isLightTheme ? "text-gray-900 group-hover:text-black" : "text-white group-hover:text-white"}`}>
+                    <div className="text-[10px] sm:text-xs font-mono text-purple-400 font-bold">LIVE PORTFOLIO</div>
+                    <div className={`text-xs sm:text-sm font-bold transition-colors ${isLightTheme ? "text-gray-900 group-hover:text-purple-600" : "text-white group-hover:text-purple-300"}`}>
                       harry.services
                     </div>
                   </div>
-                  <ExternalLink className={`w-4 h-4 shrink-0 ${isLightTheme ? "text-gray-400 group-hover:text-black" : "text-[#888888] group-hover:text-white"}`} />
+                  <ExternalLink className="w-4 h-4 shrink-0 text-purple-400" />
                 </div>
               </a>
             </div>
@@ -165,38 +155,38 @@ export default function ContactSection({ isLightTheme = false }) {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border flex items-center justify-center transition-colors ${
-                  isLightTheme ? "bg-gray-100 border-gray-300 text-gray-800 hover:text-black hover:border-gray-400" : "bg-[#111111] border-[#262626] text-[#DCDCDC] hover:text-white hover:border-[#444444]"
+                className={`w-11 h-11 rounded-xl border flex items-center justify-center transition-all ${
+                  isLightTheme ? "bg-gray-100 border-gray-300 text-gray-800 hover:text-purple-600 hover:border-purple-300" : "bg-[#111115] border-[#22222A] text-gray-300 hover:text-purple-400 hover:border-purple-500/50"
                 }`}
-                aria-label="GitHub"
+                aria-label="Facebook"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border flex items-center justify-center transition-colors ${
-                  isLightTheme ? "bg-gray-100 border-gray-300 text-gray-800 hover:text-black hover:border-gray-400" : "bg-[#111111] border-[#262626] text-[#DCDCDC] hover:text-white hover:border-[#444444]"
+                className={`w-11 h-11 rounded-xl border flex items-center justify-center transition-all ${
+                  isLightTheme ? "bg-gray-100 border-gray-300 text-gray-800 hover:text-pink-600 hover:border-pink-300" : "bg-[#111115] border-[#22222A] text-gray-300 hover:text-pink-400 hover:border-pink-500/50"
                 }`}
-                aria-label="LinkedIn"
+                aria-label="Instagram"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               </a>
             </div>
           </div>
 
           {/* Right Column: Contact Message Form */}
-          <div className={`p-5 sm:p-10 rounded-3xl border shadow-xl flex flex-col justify-between ${
-            isLightTheme ? "bg-white border-gray-200" : "bg-[#0A0A0A] border-[#1E1E1E]"
+          <div className={`p-6 sm:p-10 rounded-3xl border shadow-2xl flex flex-col justify-between ${
+            isLightTheme ? "bg-white border-gray-200" : "bg-[#0B0B0E] border-[#20202A]"
           }`}>
             <div>
               <h3 className={`text-xl sm:text-2xl font-bold mb-2 font-mono uppercase ${isLightTheme ? "text-[#111827]" : "text-white"}`}>SEND A MESSAGE</h3>
@@ -205,51 +195,55 @@ export default function ContactSection({ isLightTheme = false }) {
               </p>
 
               {submitted ? (
-                <div className={`p-5 sm:p-6 rounded-2xl border text-xs sm:text-sm font-mono font-bold text-center leading-relaxed ${
-                  isLightTheme ? "bg-gray-100 border-gray-300 text-gray-900" : "bg-white/10 border border-white/30 text-white"
-                }`}>
+                <div className="p-5 sm:p-6 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-mono font-bold text-center leading-relaxed shadow-lg shadow-emerald-500/10">
                   ✓ Message Sent Successfully to <strong>kumarraj6304467271@gmail.com</strong>!
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   <div>
-                    <label className={`block text-xs font-mono mb-2 uppercase ${isLightTheme ? "text-gray-700" : "text-[#AAAAAA]"}`}>YOUR NAME</label>
+                    <label className={`block text-xs font-mono mb-2 uppercase font-semibold ${isLightTheme ? "text-gray-700" : "text-gray-300"}`}>YOUR NAME</label>
                     <input
                       type="text"
                       required
                       placeholder="John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
-                        isLightTheme ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-black" : "bg-[#121212] border-[#222222] text-white focus:border-white"
+                      className={`w-full px-4 py-3 rounded-2xl border text-sm focus:outline-none transition-all ${
+                        isLightTheme 
+                          ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20" 
+                          : "bg-[#14141A] border-[#262632] text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                       }`}
                     />
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-mono mb-2 uppercase ${isLightTheme ? "text-gray-700" : "text-[#AAAAAA]"}`}>YOUR EMAIL</label>
+                    <label className={`block text-xs font-mono mb-2 uppercase font-semibold ${isLightTheme ? "text-gray-700" : "text-gray-300"}`}>YOUR EMAIL</label>
                     <input
                       type="email"
                       required
                       placeholder="john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
-                        isLightTheme ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-black" : "bg-[#121212] border-[#222222] text-white focus:border-white"
+                      className={`w-full px-4 py-3 rounded-2xl border text-sm focus:outline-none transition-all ${
+                        isLightTheme 
+                          ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20" 
+                          : "bg-[#14141A] border-[#262632] text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                       }`}
                     />
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-mono mb-2 uppercase ${isLightTheme ? "text-gray-700" : "text-[#AAAAAA]"}`}>MESSAGE</label>
+                    <label className={`block text-xs font-mono mb-2 uppercase font-semibold ${isLightTheme ? "text-gray-700" : "text-gray-300"}`}>MESSAGE</label>
                     <textarea
                       required
                       rows={4}
                       placeholder="Hi Kumar, I'd like to discuss a project..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors resize-none ${
-                        isLightTheme ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-black" : "bg-[#121212] border-[#222222] text-white focus:border-white"
+                      className={`w-full px-4 py-3 rounded-2xl border text-sm focus:outline-none transition-all resize-none ${
+                        isLightTheme 
+                          ? "bg-gray-50 border-gray-300 text-gray-900 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/20" 
+                          : "bg-[#14141A] border-[#262632] text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                       }`}
                     />
                   </div>
@@ -257,9 +251,9 @@ export default function ContactSection({ isLightTheme = false }) {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full py-3.5 rounded-xl font-mono font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
-                      isLightTheme ? "bg-[#111827] text-white hover:bg-black" : "bg-white text-black hover:bg-neutral-200"
-                    } ${loading ? "opacity-75 cursor-not-allowed" : ""}`}
+                    className={`w-full py-4 rounded-2xl font-mono font-extrabold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white hover:opacity-95 shadow-lg shadow-purple-500/30 cursor-pointer ${
+                      loading ? "opacity-75 cursor-not-allowed" : ""
+                    }`}
                   >
                     {loading ? (
                       <>
@@ -278,7 +272,7 @@ export default function ContactSection({ isLightTheme = false }) {
             </div>
 
             <div className={`pt-6 sm:pt-8 mt-6 sm:mt-8 border-t text-center text-[10px] sm:text-xs font-mono ${
-              isLightTheme ? "border-gray-200 text-gray-500" : "border-[#181818] text-[#666666]"
+              isLightTheme ? "border-gray-200 text-gray-500" : "border-[#1A1A22] text-gray-500"
             }`}>
               © {new Date().getFullYear()} VIPPARTHI KUMAR RAJU • ALL RIGHTS RESERVED
             </div>

@@ -366,12 +366,21 @@ export default function HeroSection({
         </div>
       )}
 
+      {/* Ambient Color Glow Pools */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
+
       {/* 1. Giant Background Typography (KUMAR Left / RAJU Right) */}
       <div className="absolute top-[26%] sm:top-[28%] -translate-y-1/2 w-full flex justify-between items-center pointer-events-none select-none z-0 px-1 sm:px-6 lg:px-12">
-        <span className="text-giant-title text-right flex-1 pr-2 sm:pr-14 md:pr-20 lg:pr-28 transition-colors duration-500">
+        <span className={`text-giant-title text-right flex-1 pr-2 sm:pr-14 md:pr-20 lg:pr-28 transition-colors duration-500 ${
+          isLightTheme ? "light-giant-title" : ""
+        }`}>
           KUMAR
         </span>
-        <span className="text-giant-title text-left flex-1 pl-2 sm:pl-14 md:pl-20 lg:pl-28 transition-colors duration-500">
+        <span className={`text-giant-title text-left flex-1 pl-2 sm:pl-14 md:pl-20 lg:pl-28 transition-colors duration-500 ${
+          isLightTheme ? "light-giant-title" : ""
+        }`}>
           RAJU
         </span>
       </div>
@@ -384,7 +393,7 @@ export default function HeroSection({
             alt="Kumar Raju Portfolio Visual"
             fill
             priority
-            className="object-contain object-bottom transition-all duration-700"
+            className="object-contain object-bottom transition-all duration-700 drop-shadow-[0_10px_35px_rgba(147,51,234,0.15)]"
           />
         </div>
       </div>
@@ -396,27 +405,27 @@ export default function HeroSection({
           addXp(100, "Secret Node Unlocked", e);
           triggerAchievement("SECRET DISCOVERED: +100 XP!");
         }}
-        className={`absolute bottom-3 left-3 sm:bottom-8 sm:left-8 z-20 inline-flex items-center gap-2.5 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl backdrop-blur-md cursor-pointer transition-all shadow-2xl group max-w-[150px] sm:max-w-none ${
-          isLightTheme ? "bg-white/90 border border-gray-300 hover:border-gray-500 text-gray-900" : "bg-[#000000]/85 border border-[#262626] hover:border-white/50 text-white"
+        className={`absolute bottom-3 left-3 sm:bottom-8 sm:left-8 z-20 inline-flex items-center gap-2.5 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl backdrop-blur-xl cursor-pointer transition-all shadow-2xl group max-w-[150px] sm:max-w-none ${
+          isLightTheme 
+            ? "bg-white/90 border border-purple-200 hover:border-purple-400 text-gray-900 shadow-purple-500/10" 
+            : "bg-[#0A0A0E]/90 border border-purple-500/30 hover:border-purple-400 text-white shadow-purple-500/20"
         }`}
       >
-        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-mono font-bold text-[10px] sm:text-xs group-hover:scale-110 transition-transform shrink-0 ${
-          isLightTheme ? "bg-gray-100 text-gray-900 border border-gray-300" : "bg-white/10 text-white border border-white/20"
-        }`}>
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center font-mono font-bold text-[10px] sm:text-xs group-hover:scale-110 transition-transform shrink-0 shadow-md shadow-purple-500/30">
           LVL {level}
         </div>
         <div className="flex flex-col min-w-0">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider truncate ${isLightTheme ? "text-gray-900" : "text-white"}`}>
-              {xp} <span className={isLightTheme ? "text-gray-500" : "text-[#AAAAAA]"}>XP</span>
+            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider truncate text-amber-400">
+              {xp} <span className="text-purple-300 font-semibold">XP</span>
             </span>
-            <span className={`text-[9px] sm:text-[10px] font-mono uppercase hidden xs:inline ${isLightTheme ? "text-gray-400" : "text-[#DCDCDC]/50"}`}>
+            <span className={`text-[9px] sm:text-[10px] font-mono uppercase hidden xs:inline ${isLightTheme ? "text-gray-400" : "text-gray-400"}`}>
               / {level * 300}
             </span>
           </div>
-          <div className={`w-16 sm:w-24 h-1 sm:h-1.5 rounded-full overflow-hidden mt-1 ${isLightTheme ? "bg-gray-200" : "bg-[#222222]"}`}>
+          <div className="w-16 sm:w-24 h-1.5 rounded-full overflow-hidden mt-1 bg-gray-800/80">
             <div 
-              className={`h-full transition-all duration-300 ${isLightTheme ? "bg-black" : "bg-white"}`}
+              className="h-full bg-gradient-to-r from-amber-400 via-purple-500 to-indigo-500 transition-all duration-300 shadow-sm"
               style={{ width: `${Math.min(100, (xp / (level * 300)) * 100)}%` }}
             />
           </div>
@@ -424,16 +433,18 @@ export default function HeroSection({
       </div>
 
       {/* 4. Floating Bottom Right Short Description */}
-      <div className={`absolute bottom-3 right-3 sm:bottom-8 sm:right-8 z-20 max-w-[155px] xs:max-w-[200px] sm:max-w-xs text-right backdrop-blur-md p-2.5 sm:p-4 rounded-xl shadow-2xl transition-all ${
-        isLightTheme ? "bg-white/90 border border-gray-300 text-gray-900" : "bg-[#000000]/80 border border-[#222222] text-white"
+      <div className={`absolute bottom-3 right-3 sm:bottom-8 sm:right-8 z-20 max-w-[155px] xs:max-w-[200px] sm:max-w-xs text-right backdrop-blur-xl p-2.5 sm:p-4 rounded-2xl shadow-2xl transition-all ${
+        isLightTheme 
+          ? "bg-white/90 border border-indigo-200 text-gray-900 shadow-indigo-500/10" 
+          : "bg-[#0A0A0E]/90 border border-indigo-500/30 text-white shadow-indigo-500/20"
       }`}>
         <div className="flex items-center justify-end gap-1.5 sm:gap-2 mb-0.5 sm:mb-1">
-          <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse shrink-0 ${isLightTheme ? "bg-black" : "bg-white"}`} />
-          <span className={`text-[9px] sm:text-xs font-mono uppercase tracking-widest truncate ${isLightTheme ? "text-gray-500" : "text-[#DCDCDC]/75"}`}>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0 shadow-sm shadow-emerald-400/50" />
+          <span className="text-[9px] sm:text-xs font-mono font-bold uppercase tracking-widest truncate bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
             FULL-STACK ARCHITECT
           </span>
         </div>
-        <p className={`text-[10px] sm:text-sm font-medium leading-tight sm:leading-snug ${isLightTheme ? "text-gray-800" : "text-white/90"}`}>
+        <p className={`text-[10px] sm:text-sm font-medium leading-tight sm:leading-snug ${isLightTheme ? "text-gray-800" : "text-gray-200"}`}>
           Crafting web apps & digital experiences.
         </p>
       </div>

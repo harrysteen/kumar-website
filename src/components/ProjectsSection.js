@@ -62,6 +62,18 @@ export default function ProjectsSection({ isLightTheme = false }) {
     }
   ];
 
+  const getTechBadgeStyle = (techName) => {
+    const t = techName.toLowerCase();
+    if (t.includes("react")) return "bg-cyan-500/15 text-cyan-400 border-cyan-400/40 shadow-sm shadow-cyan-500/10";
+    if (t.includes("next")) return "bg-purple-500/15 text-purple-300 border-purple-400/40 shadow-sm shadow-purple-500/10";
+    if (t.includes("clover")) return "bg-emerald-500/15 text-emerald-400 border-emerald-400/40 shadow-sm shadow-emerald-500/10";
+    if (t.includes("sanity")) return "bg-rose-500/15 text-rose-400 border-rose-400/40 shadow-sm shadow-rose-500/10";
+    if (t.includes("wordpress") || t.includes("elementor")) return "bg-indigo-500/15 text-indigo-300 border-indigo-400/40 shadow-sm shadow-indigo-500/10";
+    if (t.includes("tailwind") || t.includes("css")) return "bg-teal-500/15 text-teal-300 border-teal-400/40 shadow-sm shadow-teal-500/10";
+    if (t.includes("php") || t.includes("mysql")) return "bg-amber-500/15 text-amber-400 border-amber-400/40 shadow-sm shadow-amber-500/10";
+    return isLightTheme ? "bg-gray-100 border-gray-200 text-gray-800" : "bg-[#1A1A22] border-[#2A2A35] text-gray-200";
+  };
+
   const nextProject = () => {
     setActiveTab((prev) => (prev + 1) % projects.length);
   };
@@ -72,17 +84,15 @@ export default function ProjectsSection({ isLightTheme = false }) {
 
   return (
     <section id="portfolio" className={`w-full py-14 sm:py-24 relative z-20 transition-colors duration-500 ${
-      isLightTheme ? "bg-[#FFFFFF] border-t border-gray-200" : "bg-[#000000] border-t border-[#1C1C1C]"
+      isLightTheme ? "bg-[#FFFFFF] border-t border-gray-200" : "bg-[#050505] border-t border-[#1C1C1C]"
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-16">
         
         {/* Section Title Header */}
         <div className="flex flex-col mb-6 sm:mb-16">
           <div className="flex items-center gap-2 mb-2">
-            <span className={`w-2 h-2 rounded-full ${isLightTheme ? "bg-black" : "bg-white"}`} />
-            <span className={`text-[11px] sm:text-xs font-mono uppercase tracking-widest ${
-              isLightTheme ? "text-gray-500" : "text-[#DCDCDC]/70"
-            }`}>
+            <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse shadow-sm shadow-purple-500/50" />
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-purple-400 font-bold">
               FEATURED WORK & CASE STUDIES
             </span>
           </div>
@@ -109,11 +119,9 @@ export default function ProjectsSection({ isLightTheme = false }) {
                 <button
                   key={idx}
                   onClick={() => setActiveTab(idx)}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-mono font-bold whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-full text-[11px] font-mono font-bold whitespace-nowrap transition-all cursor-pointer ${
                     activeTab === idx
-                      ? isLightTheme
-                        ? "bg-[#111827] text-white shadow-md scale-105"
-                        : "bg-white text-black shadow-lg scale-105"
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-500/30 scale-105"
                       : isLightTheme
                         ? "bg-gray-100 text-gray-700 border border-gray-200"
                         : "bg-[#141414] text-[#A0A0A0] border border-[#222222]"
@@ -195,9 +203,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                   {projects[activeTab].tech.map((t, tIdx) => (
                     <span
                       key={tIdx}
-                      className={`px-2 py-0.5 rounded-md border text-[10px] font-mono ${
-                        isLightTheme ? "bg-gray-100 border-gray-200 text-gray-700" : "bg-[#161616] border-[#262626] text-[#DCDCDC]"
-                      }`}
+                      className={`px-2.5 py-1 rounded-full border text-[10px] font-mono font-bold ${getTechBadgeStyle(t)}`}
                     >
                       {t}
                     </span>
@@ -210,7 +216,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                     <li key={bIdx} className={`flex items-start gap-2 text-xs leading-relaxed ${
                       isLightTheme ? "text-gray-600" : "text-[#AAAAAA]"
                     }`}>
-                      <Check className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isLightTheme ? "text-black" : "text-white"}`} />
+                      <Check className="w-3.5 h-3.5 shrink-0 mt-0.5 text-purple-400" />
                       <span className="flex-1">{bullet}</span>
                     </li>
                   ))}
@@ -229,7 +235,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                       onClick={() => setActiveTab(dotIdx)}
                       className={`h-1.5 rounded-full transition-all cursor-pointer ${
                         activeTab === dotIdx
-                          ? isLightTheme ? "w-5 bg-black" : "w-5 bg-white"
+                          ? "w-5 bg-gradient-to-r from-purple-500 to-indigo-500"
                           : isLightTheme ? "w-1.5 bg-gray-300" : "w-1.5 bg-[#262626]"
                       }`}
                       aria-label={`Select project ${dotIdx + 1}`}
@@ -250,16 +256,14 @@ export default function ProjectsSection({ isLightTheme = false }) {
               whileHover={{ y: -6 }}
               className={`p-8 rounded-3xl border flex flex-col justify-between transition-all shadow-xl group ${
                 isLightTheme
-                  ? "bg-white border-gray-200 hover:border-gray-400"
-                  : "bg-[#0B0B0B] border-[#222222] hover:border-[#444444]"
+                  ? "bg-white border-gray-200 hover:border-purple-300 hover:shadow-purple-500/10"
+                  : "bg-[#0B0B0E] border-[#22222A] hover:border-purple-500/40 hover:shadow-purple-500/10"
               }`}
             >
               <div>
                 {/* Card Header */}
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                  <span className={`text-xs font-mono font-bold uppercase tracking-wider ${
-                    isLightTheme ? "text-gray-700" : "text-[#DCDCDC]"
-                  }`}>
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-purple-400">
                     {project.role}
                   </span>
                   {project.link && (
@@ -267,11 +271,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-full border transition-colors ${
-                        isLightTheme
-                          ? "bg-gray-100 border-gray-200 text-gray-800 hover:text-black hover:underline"
-                          : "bg-[#161616] border-[#2B2B2B] text-white/80 hover:text-white hover:underline"
-                      }`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono px-3.5 py-1 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold hover:opacity-90 shadow-md shadow-purple-500/20 transition-all"
                     >
                       <span>{project.displayUrl}</span>
                       <ExternalLink className="w-3 h-3 shrink-0" />
@@ -281,7 +281,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
 
                 {/* Title & Subtitle */}
                 <h3 className={`text-3xl font-extrabold mb-1 transition-colors ${
-                  isLightTheme ? "text-[#111827] group-hover:text-black" : "text-white group-hover:text-[#DDDDDD]"
+                  isLightTheme ? "text-[#111827] group-hover:text-purple-600" : "text-white group-hover:text-purple-300"
                 }`}>
                   {project.title}
                 </h3>
@@ -294,9 +294,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                   {project.tech.map((t, tIdx) => (
                     <span
                       key={tIdx}
-                      className={`px-2.5 py-1 rounded-md border text-[11px] font-mono ${
-                        isLightTheme ? "bg-gray-100 border-gray-200 text-gray-700" : "bg-[#161616] border-[#262626] text-[#DCDCDC]"
-                      }`}
+                      className={`px-3 py-1 rounded-full border text-[11px] font-mono font-bold ${getTechBadgeStyle(t)}`}
                     >
                       {t}
                     </span>
@@ -309,7 +307,7 @@ export default function ProjectsSection({ isLightTheme = false }) {
                     <li key={bIdx} className={`flex items-start gap-2.5 text-sm leading-relaxed ${
                       isLightTheme ? "text-gray-600" : "text-[#AAAAAA]"
                     }`}>
-                      <Check className={`w-4 h-4 shrink-0 mt-0.5 ${isLightTheme ? "text-black" : "text-white"}`} />
+                      <Check className="w-4 h-4 shrink-0 mt-0.5 text-purple-400" />
                       <span>{bullet}</span>
                     </li>
                   ))}
