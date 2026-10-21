@@ -9,6 +9,7 @@ export default function DeletionRequestForm({ supportEmail }) {
   const [form, setForm] = useState({ email: "", phone: "", reason: "" });
   const [error, setError] = useState("");
   const [opened, setOpened] = useState(false);
+  const isEmailValid = EMAIL_PATTERN.test(form.email.trim());
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -18,7 +19,8 @@ export default function DeletionRequestForm({ supportEmail }) {
     e.preventDefault();
     setOpened(false);
 
-    if (!EMAIL_PATTERN.test(form.email.trim())) {
+    if (!isConfigured) return;
+    if (!isEmailValid) {
       setError("Please enter the email address registered with your HS Mart account.");
       return;
     }
@@ -117,11 +119,17 @@ export default function DeletionRequestForm({ supportEmail }) {
 
       <button
         type="submit"
-        disabled={!isConfigured}
+        disabled={!isConfigured || !isEmailValid}
+        aria-describedby={isConfigured && !isEmailValid ? "button-hint" : undefined}
         className="w-full rounded-xl bg-purple-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-purple-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-not-allowed disabled:bg-zinc-700 disabled:text-zinc-400 sm:w-auto"
       >
         Open email to send request
       </button>
+      {isConfigured && !isEmailValid && (
+        <p id="button-hint" className="text-sm text-zinc-400">
+          Enter a valid registered email address to continue.
+        </p>
+      )}
 
       <div aria-live="polite">
         {opened && (

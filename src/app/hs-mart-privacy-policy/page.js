@@ -8,7 +8,7 @@ const POLICY = {
   effectiveDate: "[EFFECTIVE DATE — e.g. October 21, 2026]",
   lastUpdated: "October 21, 2026",
   developerName: "[DEVELOPER / BUSINESS LEGAL NAME]",
-  contactEmail: "[CONTACT EMAIL ADDRESS]",
+  contactEmail: "kumarraj6304467271@gmail.com",
   postalAddress: "[BUSINESS POSTAL ADDRESS]",
   deletionDays: "[NUMBER]",
   minimumAge: "18",

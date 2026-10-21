@@ -8,7 +8,7 @@ const PAGE_URL = "https://harry.services/hs-mart-account-deletion";
 const DELETION = {
   appName: "HS Mart",
   developerName: "[DEVELOPER / BUSINESS LEGAL NAME]",
-  supportEmail: "[SUPPORT EMAIL ADDRESS]",
+  supportEmail: "kumarraj6304467271@gmail.com",
   processingDays: "[NUMBER]",
   lastUpdated: "October 21, 2026",
 };
