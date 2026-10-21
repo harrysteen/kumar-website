@@ -1,16 +1,16 @@
 import Link from "next/link";
 import DeletionRequestForm from "./DeletionRequestForm";
 
-const PAGE_URL = "https://harry.services/hs-mart-account-deletion";
+const PAGE_URL = "https://kumar-website.vercel.app/hs-mart-account-deletion";
 
-// TODO before publishing: replace every value wrapped in [ ] below.
 // The request form stays disabled until supportEmail is a real email address.
 const DELETION = {
   appName: "HS Mart",
-  developerName: "[DEVELOPER / BUSINESS LEGAL NAME]",
+  developerName: "kumarraju",
   supportEmail: "kumarraj6304467271@gmail.com",
-  processingDays: "[NUMBER]",
-  lastUpdated: "October 21, 2026",
+  processingDays: "14",
+  lastUpdated: "October 22, 2026",
+  lastUpdatedISO: "2026-10-22",
 };
 
 export const metadata = {
@@ -66,12 +66,33 @@ export default function HSMartAccountDeletionPage() {
               You do not need to sign in or have the app installed to make a request.
             </p>
             <p className="mt-4 text-sm text-zinc-500">
-              Last updated: <time dateTime="2026-10-21">{DELETION.lastUpdated}</time>
+              Last updated: <time dateTime={DELETION.lastUpdatedISO}>{DELETION.lastUpdated}</time>
             </p>
           </header>
 
           <div className="space-y-10">
-            <Section id="how-to-request" title="How to request deletion">
+            <Section id="delete-in-app" title="Delete your account in the app">
+              <p>If you can sign in to {appName}, you can delete your account directly in the app:</p>
+              <ol className="list-decimal space-y-2 pl-5 marker:text-purple-400">
+                <li>Open {appName} and sign in.</li>
+                <li>
+                  Go to the <strong className="text-white">Profile</strong> tab and tap{" "}
+                  <strong className="text-white">Delete Account</strong>.
+                </li>
+                <li>Confirm, then enter your password to verify it is you.</li>
+              </ol>
+              <p>
+                This permanently deletes your account and removes the order history and saved address stored on your
+                phone. It does not automatically remove your customer and order records in our Shopify store. To have
+                those deleted too, send a request using the form below.
+              </p>
+            </Section>
+
+            <Section id="how-to-request" title="Request deletion by email">
+              <p>
+                Use this option if you cannot sign in, no longer have the app, or want your Shopify customer and order
+                records deleted.
+              </p>
               <ol className="list-decimal space-y-2 pl-5 marker:text-purple-400">
                 <li>Fill in the form below with the email address you used to register for {appName}.</li>
                 <li>
@@ -80,11 +101,15 @@ export default function HSMartAccountDeletionPage() {
                 </li>
                 <li>
                   If you prefer, email <strong className="text-white">{supportEmail}</strong> directly with the
-                  subject &quot;HS Mart Account Deletion Request&quot; and your registered email address or phone
-                  number.
+                  subject &quot;HS Mart Account Deletion Request&quot; and your registered email address. You can also
+                  include the phone number you used for deliveries to help us find your orders.
                 </li>
-                <li>We will reply to confirm we received your request, and again when it has been completed.</li>
               </ol>
+              <p>
+                This page does not send anything by itself. Your request reaches us only after you press Send in your
+                email app. We review requests sent to {supportEmail} and will contact you at the email address you
+                write from if we need to verify your account or have questions about your request.
+              </p>
             </Section>
 
             <section
@@ -109,9 +134,17 @@ export default function HSMartAccountDeletionPage() {
 
             <Section id="what-is-deleted" title="What data is deleted">
               <List>
-                <li>Your {appName} account and sign-in details (name, email address, phone number, and user ID).</li>
-                <li>Personal details linked to your account, such as saved names, phone numbers, and delivery addresses.</li>
-                <li>Personal details attached to your past orders, except where we must keep them (see below).</li>
+                <li>
+                  Your {appName} account and email and password sign-in details (name, email address, and user ID).
+                </li>
+                <li>
+                  Personal details you gave us for deliveries, such as recipient names, delivery phone numbers, and
+                  delivery addresses.
+                </li>
+                <li>
+                  Personal details in your Shopify customer and order records, which we remove manually after
+                  verifying your request, except where we must keep them (see below).
+                </li>
               </List>
             </Section>
 

@@ -33,7 +33,7 @@ export default function DeletionRequestForm({ supportEmail }) {
       "Please delete my HS Mart account and the personal data associated with it.",
       "",
       `Registered email: ${form.email.trim()}`,
-      `Registered phone number: ${form.phone.trim() || "Not provided"}`,
+      `Delivery phone number: ${form.phone.trim() || "Not provided"}`,
       `Reason: ${form.reason.trim() || "Not provided"}`,
       "",
       "I understand you may contact me to verify that I own this account.",
@@ -81,7 +81,7 @@ export default function DeletionRequestForm({ supportEmail }) {
 
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-zinc-200">
-          Registered phone number <span className="text-zinc-500">(optional)</span>
+          Delivery phone number <span className="text-zinc-500">(optional)</span>
         </label>
         <input
           id="phone"
